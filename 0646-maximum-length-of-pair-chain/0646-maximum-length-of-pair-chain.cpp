@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[1005][3000];
+    int dp[1005][2005];
     int n;
     int ff(int i,vector<vector<int>>&v,int prev)
     {
