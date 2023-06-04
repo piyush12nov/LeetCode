@@ -2,25 +2,18 @@ class Solution {
 public:
     int destroyTargets(vector<int>& nums, int space) {
         int n=nums.size(),an=0,ans=INT_MAX;
-        unordered_map<int, int>m,ma;
+        unordered_map<int, int>m;
         for(auto x:nums)
         {
             m[x%space]++;
-            if(ma.find(x%space)==m.end())ma[x%space]=x;
-            ma[x%space]=min(ma[x%space],x);
+             an=max(an,m[x%space]);
         }
-        for(auto x:m)
+        for(auto x:nums)
         {
-            if(an<x.second)
+            if(an==m[x%space])
             {
-                ans=ma[x.first];
-                an=x.second;
+                ans=min(x,ans);
             }
-            else if(an==x.second)
-            {
-                ans=min(ma[x.first],ans);
-            }
-
         }
         return ans;
     }
