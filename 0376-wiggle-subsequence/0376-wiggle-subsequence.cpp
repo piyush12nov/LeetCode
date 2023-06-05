@@ -13,22 +13,17 @@ public:
         if(type==0&&prev<a[i])
         {
             x=ff(i+1,1,a,a[i]);
-
-       //     cout<<i<<" "<<prev<<" "<<type<<endl;
             aa=1+x;
         }
         if(type==1&&prev>a[i])
         {
             y=ff(i+1,0,a,a[i]);
-        //    cout<<i<<" "<<prev<<" "<<type<<endl;
             b=1+y;
         }
         if(type==0)y=ff(i+1,0,a,a[i]);
         if(type==1)x=ff(i+1,1,a,a[i]);
-        z=ff(i+1,type,a,prev);
-        
-        dp[i][type]=max({aa,x,b,y,z});
-        
+  //      z=ff(i+1,type,a,prev);
+        dp[i][type]=max({aa,x,b,y,z});      
         return dp[i][type];
     }
     int wiggleMaxLength(vector<int>& nums) {
