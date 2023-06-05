@@ -1,14 +1,14 @@
 class Solution
 {
 	public:
-	int dp[1005][3];
+	int dp[1005];
     int n;
 	
     int ff(int i, int type, vector<int> &a, int prev)
 	{
 		if (i >= n) return 0;
 		
-        if (dp[i][type] != -1) return dp[i][type];
+        if (dp[i] != -1) return dp[i];
 
 		int aa = 0, b = 0, x = 0, y = 0;
 
@@ -27,7 +27,7 @@ class Solution
 		if (type == 0) y = ff(i + 1, 0, a, a[i]);
 		if (type == 1) x = ff(i + 1, 1, a, a[i]);
 		
-        return dp[i][type] = max({ aa, x, b, y });
+        return dp[i] = max({ aa, x, b, y });
 	}
 
 	int wiggleMaxLength(vector<int> &nums)
