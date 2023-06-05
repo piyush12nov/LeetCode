@@ -12,23 +12,24 @@
 class Solution
 {
     public:
-    map<pair<TreeNode*, int>, int> dp;
-    int ff(TreeNode *root, int v)
+    int ff(TreeNode *root, int v,  map<pair<TreeNode*, int>, int> &dp)
     {
         if (root == nullptr) return 0;
-       	//     cout<<root->val<<" "<<v-1<<endl;
+
         if (dp.find({ root,v }) != dp.end()) return dp[{ root,v }];
         int a = 0, b = 0;
         if (v - 1 <= 0)
         {
-            a = root->val + ff(root->left, 2) + ff(root->right, 2);
+            a = root->val + ff(root->left, 2, dp) + ff(root->right, 2, dp);
         }
-        b = ff(root->left, min(v - 1, 0)) + ff(root->right, min(0, v - 1));
-       	//    cout<<max(a,b)<<" TTTTTTTTTT  "<<root->val<<endl;
+        b = ff(root->left, min(v - 1, 0), dp) + ff(root->right, min(0, v - 1), dp);
+
         return dp[{ root,v }] = max(a, b);
+    
     }
     int rob(TreeNode *root)
     {
-        return ff(root, 0);
+        map<pair<TreeNode*, int>, int> dp;
+        return ff(root, 0,dp);
     }
 };
