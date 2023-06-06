@@ -4,7 +4,7 @@ class Solution
         string evaluate(string s, vector<vector < string>> &knowledge)
         {
             int i, n = s.size();
-            map<string, string> m;
+            unordered_map<string, string> m;
             string ans;
             for (auto x: knowledge)
             {
@@ -21,7 +21,7 @@ class Solution
                         ss = ss + s[i];
                         i++;
                     }
-                    if (m.find(ss) != m.end()) ans += m[ss];
+                    if (m.count(ss)) ans += m[ss];
                     else ans += '?';
                 }
                 else
