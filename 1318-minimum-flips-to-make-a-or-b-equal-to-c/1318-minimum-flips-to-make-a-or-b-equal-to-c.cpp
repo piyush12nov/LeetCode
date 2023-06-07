@@ -5,7 +5,7 @@ class Solution
         {
             int i,a,b,c, ans = 0;  
             
-            for (i = 0; i < 32; i++)
+            for (;(x||y||z);)
             {
                 a = x % 2;
                 x = x / 2;
