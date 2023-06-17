@@ -20,7 +20,7 @@ class Solution
         }
         return true;
     }
-    void ff(int i, vector<string> v, string s)
+    void ff(int i, vector<string>& v, string &s)
     {
         if (i == s.size())
         {
