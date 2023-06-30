@@ -2,10 +2,11 @@ class Solution {
 public:
     int minimumCardPickup(vector<int>& a) {
         int ans=INT_MAX;
-        map<int,int>m;
+        int m[1000001];
+        memset(m,-1,sizeof(m));
         for(int i=0;i<a.size();i++)
         {
-            if(m.find(a[i])!=m.end()&&m[a[i]]<=i)
+            if(m[a[i]]!=-1)
             {
                 ans=min(ans,abs(m[a[i]]-i)+1);
             }
