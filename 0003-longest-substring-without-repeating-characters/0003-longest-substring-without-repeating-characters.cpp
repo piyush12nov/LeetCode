@@ -2,15 +2,17 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int ans=0,start=0;
-        map<char,int>m;
+        int m[105];
+        memset(m,-1,sizeof(m));
         for(int i=0;i<s.size();i++)
         {
-            if(m.find(s[i])!=m.end()&&m[s[i]]>=start)
+            int ss=s[i]-' ';
+            if(m[ss]!=-1&&m[ss]>=start)
             {
-                start=m[s[i]]+1;
+                start=m[ss]+1;
             }
             ans=max(ans,abs(start-i)+1);
-            m[s[i]]=i;
+            m[ss]=i;
         }
         return ans;
     }
