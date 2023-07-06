@@ -10,16 +10,12 @@ public:
             while(sum>=tar)
             {
                 sum-=a[l];
-            
                 ans=min(ans,r-l+1);
-            
                 l++;
             }
 
             r++;
         }
-        
-      
         return ans==INT_MAX?0:ans;
     }
 };
