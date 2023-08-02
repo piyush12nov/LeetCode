@@ -1,14 +1,13 @@
 class Solution {
 public:
-    void solve(vector<int>& nums, vector<vector<int>>& ans, int index){
-        if(index >= nums.size()){
+    void solve(vector<int> nums, vector<vector<int>>& ans, int index){
+        if(index >= nums.size()-1){
             ans.push_back(nums);
             return;
         }
         for(int j=index; j<nums.size(); j++){
             swap(nums[index], nums[j]);
-            solve(nums, ans, index+1); //recursive call
-            swap(nums[index], nums[j]); //backtracking
+            solve(nums, ans, index+1); 
         }
     }
 
