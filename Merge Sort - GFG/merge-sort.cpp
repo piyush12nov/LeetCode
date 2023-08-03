@@ -24,9 +24,9 @@ class Solution
          int temp[r+l-1];
          int left=l,right=m+1;
          int i=0;
-         while(left<=m&&right<=r)
+         while(left<=m||right<=r)
          {
-             if(arr[left]<=arr[right])
+             if(right>r||(left<=m&&right<=r&&arr[left]<=arr[right]))
              {
                  temp[i++]=arr[left++];
              }
@@ -35,14 +35,14 @@ class Solution
                  temp[i++]=arr[right++];
              }
          }
-         while(left<=m)
-         {
-             temp[i++]=arr[left++];
-         }
-         while(right<=r)
-         {
-             temp[i++]=arr[right++];
-         }
+        //  while(left<=m)
+        //  {
+        //      temp[i++]=arr[left++];
+        //  }
+        //  while(right<=r)
+        //  {
+        //      temp[i++]=arr[right++];
+        //  }
          for(int j=l;j<=r;j++)
          {
              arr[j]=temp[j-l];
