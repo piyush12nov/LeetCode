@@ -21,46 +21,41 @@ class Solution
     public:
     void merge(int arr[], int l, int m, int r)
     {
-        vector<int>temp;
-        int i=l;
-        int j=m+1;
-        while(i<=m && j<=r)
-        {
-            if(arr[i]<arr[j])
-            {
-                temp.push_back(arr[i]);
-                i++;
-            }
-            else
-            {
-                temp.push_back(arr[j]);
-                j++;
-            }
-        }
-        while(i<=m)
-        {
-            temp.push_back(arr[i]);
-            i++;
-        }
-        while(j<=r)
-        {
-            temp.push_back(arr[j]);
-            j++;
-        }
-        for(int i=l;i<=r;i++)
-        {
-            arr[i]=temp[i-l];
-        }
-        
+         int temp[r+l-1];
+         int left=l,right=m+1;
+         int i=0;
+         while(left<=m&&right<=r)
+         {
+             if(arr[left]<=arr[right])
+             {
+                 temp[i++]=arr[left++];
+             }
+             else
+             {
+                 temp[i++]=arr[right++];
+             }
+         }
+         while(left<=m)
+         {
+             temp[i++]=arr[left++];
+         }
+         while(right<=r)
+         {
+             temp[i++]=arr[right++];
+         }
+         for(int j=l;j<=r;j++)
+         {
+             arr[j]=temp[j-l];
+         }
     }
     public:
     void mergeSort(int arr[], int l, int r)
     {
-        if(l >= r)return ;
-        int mid = (l + r)/2;
-        mergeSort(arr,l,mid);
-        mergeSort(arr,mid+1,r);
-        merge(arr,l,mid,r);
+        if(l>=r)return;
+        int m=(l+r)/2;
+        mergeSort(arr,l,m);
+        mergeSort(arr,m+1,r);
+        merge(arr,l,m,r);
     }
 };
 
