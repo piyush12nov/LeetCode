@@ -3,7 +3,7 @@ class Solution
 	public:
 		set<string> sw;
 	bool ans = false;
-	map<pair<int, int>, int> dp;
+	vector<int> dp;
 	int ff(int i, set<string> pre, int n, string s, int cnt)
 	{
 		if (cnt == n)
@@ -19,7 +19,7 @@ class Solution
 			return 0;
 		}
 
-		if (dp.find({ i, cnt }) != dp.end()) return dp[{i, cnt}];
+		if (dp[i] != -1) return dp[i];
 		
         string temp = "";
 		int as = 0;
@@ -36,7 +36,7 @@ class Solution
 			}
 		}
 
-		return dp[{i, cnt}] = as;
+		return dp[i] = as;
 	}
 
 	bool wordBreak(string s, vector<string> &wordDict)
@@ -44,6 +44,8 @@ class Solution
 		for (auto x: wordDict) sw.insert(x);
 		set<string> pre;
 		int n = s.size();
+        dp.resize(n+1,-1);
+
 		int y = ff(0, pre, n, s, 0);
 		return y;
 	}
